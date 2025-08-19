@@ -142,6 +142,29 @@ main {
     transform: scale(1.05);
 }
 
+.video-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .video-hero {
+        height: 80vh;
+    
+}
+
+
 .featured-services h2,
 .featured h2,
 .properties h1,
