@@ -1,10 +1,8 @@
-styles (1).css
-/* styles.css (Updated Shared Styles) */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Softer light grey for prestige */
+    background-color: #f0f0f0;
     color: #333;
     line-height: 1.8;
     overflow-x: hidden;
@@ -18,7 +16,7 @@ h1, h2, h3, h4 {
 .container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px;
     position: relative;
     z-index: 1;
 }
@@ -26,7 +24,7 @@ h1, h2, h3, h4 {
 header {
     background-color: #000;
     color: #fff;
-    padding: 25px 0;
+    padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -45,7 +43,7 @@ header .container {
 }
 
 .logo {
-    max-width: 220px;
+    max-width: 200px;
     height: auto;
     transition: transform 0.3s;
 }
@@ -62,20 +60,21 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.9em;
     letter-spacing: 1px;
     transition: color 0.3s, border-bottom 0.3s;
     border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover {
-    color: #d4af37; /* Subtle gold accent */
+    color: #d4af37;
     border-bottom: 2px solid #d4af37;
 }
 
@@ -83,19 +82,30 @@ main {
     padding: 50px 0;
 }
 
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.video-hero, .image-hero {
     position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.hero.parallax {
-    background-image: url('placeholder-hero.jpg');
-    height: 100vh;
-    display: flex;
-    align-items: center;
+.hero-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 0;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero-overlay {
@@ -105,31 +115,30 @@ main {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-    z-index: 0;
+    z-index: 1;
 }
 
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 4em;
-    margin-bottom: 25px;
-    /* Removed text-shadow per request */
+    font-size: 3em;
+    margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 1.4em;
-    margin-bottom: 40px;
+    font-size: 1.2em;
+    margin-bottom: 30px;
 }
 
 .cta-button {
-    background-color: #d4af37; /* Gold accent button */
+    background-color: #d4af37;
     border: 2px solid #d4af37;
     color: #fff;
-    padding: 15px 30px;
+    padding: 12px 25px;
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1px;
@@ -150,8 +159,8 @@ main {
 .contact h1,
 .testimonials h2 {
     text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 50px;
+    font-size: 2.2em;
+    margin-bottom: 40px;
     position: relative;
 }
 
@@ -165,13 +174,13 @@ main {
     display: block;
     width: 50px;
     height: 2px;
-    background: #d4af37; /* Gold accent line */
+    background: #d4af37;
     margin: 10px auto 0;
 }
 
 .featured-services {
     background-color: #fff;
-    padding: 60px 0;
+    padding: 50px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
@@ -183,7 +192,7 @@ main {
 
 .service-card {
     background: #f9f9f9;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -191,13 +200,13 @@ main {
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2); /* Gold-tinted shadow */
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
 }
 
 .service-card h3 {
-    font-size: 1.6em;
+    font-size: 1.5em;
     color: #000;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .service-card p {
@@ -232,40 +241,40 @@ main {
 }
 
 .property-info {
-    padding: 20px;
+    padding: 15px;
     text-align: center;
 }
 
 .property-info h3 {
-    font-size: 1.6em;
-    margin-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 8px;
 }
 
 .property-info p {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .details-button {
     display: inline-block;
-    background-color: #d4af37; /* Gold accent */
+    background-color: #d4af37;
     color: #fff;
-    padding: 10px 20px;
+    padding: 8px 15px;
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.3s;
 }
 
 .details-button:hover {
-    background-color: #b8972e; /* Darker gold */
+    background-color: #b8972e;
 }
 
 .about p {
     max-width: 900px;
-    margin: 0 auto 30px;
+    margin: 0 auto 25px;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .team-member {
@@ -276,12 +285,12 @@ main {
     width: 100%;
     max-width: 250px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .team-member h3 {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 .team-member p {
@@ -290,7 +299,7 @@ main {
 
 .testimonial-card {
     background: #fff;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
@@ -298,8 +307,8 @@ main {
 }
 
 .testimonial-card p {
-    margin-bottom: 20px;
-    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-size: 1em;
 }
 
 .testimonial-card h4 {
@@ -310,16 +319,16 @@ main {
 
 .contact form {
     max-width: 700px;
-    margin: 0 auto 50px;
+    margin: 0 auto 40px;
     background: #fff;
-    padding: 40px;
+    padding: 35px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .contact label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 600;
     color: #000;
 }
@@ -327,70 +336,65 @@ main {
 .contact input,
 .contact textarea {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 25px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 .contact button {
     width: 100%;
-    background-color: #d4af37; /* Gold accent */
+    background-color: #d4af37;
     color: #fff;
     border: none;
-    padding: 15px;
+    padding: 12px;
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s;
 }
 
 .contact button:hover {
-    background-color: #b8972e; /* Darker gold */
+    background-color: #b8972e;
 }
 
 .contact-info {
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .contact-info h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
+    font-size: 1.6em;
+    margin-bottom: 15px;
 }
 
 footer {
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 30px 0;
+    padding: 25px 0;
     font-size: 0.9em;
 }
 
 .social-links {
-    margin-top: 15px;
+    margin-top: 12px;
 }
 
 .social-links a {
     color: #fff;
-    font-size: 1.5em;
-    margin: 0 15px;
+    font-size: 1.4em;
+    margin: 0 12px;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-    color: #d4af37; /* Gold accent on hover */
+    color: #d4af37;
     transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-    .hero.parallax {
+    .video-hero, .image-hero {
         height: 80vh;
-        background-attachment: scroll; /* Disable parallax on mobile */
-    }
-    
-    .hero h1 {
-        font-size: 2.5em;
     }
     
     header .container {
@@ -399,69 +403,16 @@ footer {
     
     nav ul {
         flex-direction: column;
-        margin-top: 20px;
+        margin-top: 15px;
     }
     
     nav ul li {
-        margin: 10px 0;
+        margin: 8px 0;
     }
     
     .property-grid,
     .services-grid,
     .testimonial-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-.video-hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.hero-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 0;
-}
-
-.hero-fallback {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    display: none; /* Shown only if iframe fails */
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-    z-index: 1;
-}
-
-@media (max-width: 768px) {
-    .video-hero {
-        height: 80vh;
-    }
-}
-
-/* Add scroll effect for header */
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.querySelector("header").classList.add("scrolled");
-    } else {
-        document.querySelector("header").classList.remove("scrolled");
     }
 }
