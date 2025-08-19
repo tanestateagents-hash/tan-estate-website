@@ -1,12 +1,15 @@
-<!-- about.html (About Us Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about TAN Estate Agents, your trusted partner in luxury real estate across the UK.">
+    <meta name="keywords" content="about TAN Estate Agents, luxury real estate team, UK property experts">
     <title>About Us - TAN Estate Agents</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
@@ -24,28 +27,18 @@
     </header>
     
     <main>
-        <section class="about">
+        <section class="hero video-hero">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="https://drive.google.com/uc?export=download&id=1onildBNNHaOxWLYAg3cXF5p-O0NQek9Z" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
             <div class="container">
-                <h1>Our Legacy of Excellence</h1>
-                <p>TAN Estate Agents stands as a beacon of prestige in the real estate world, specializing in luxury properties that embody sophistication and timeless elegance. With a heritage of over two decades, our bespoke services cater to discerning clients seeking the extraordinary.</p>
-                <p>Driven by innovation and integrity, we blend cutting-edge market analysis with personalized concierge-level attention to transform visions into reality.</p>
-                <div class="team">
-                    <h2>Our Distinguished Team</h2>
-                    <div class="team-grid">
-                        <div class="team-member">
-                            <img src="placeholder-team1.jpg" alt="Team Member 1">
-                            <h3>Jonathan Hale</h3>
-                            <p>Founder & Principal Broker</p>
-                        </div>
-                        <div class="team-member">
-                            <img src="placeholder-team2.jpg" alt="Team Member 2">
-                            <h3>Eleanor Voss</h3>
-                            <p>Director of Luxury Sales</p>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="animate__animated animate__jackInTheBox">About TAN Estate Agents</h1>
+                <p class="animate__animated animate__fadeInUp">Meet the elite team behind your luxury real estate journey.</p>
             </div>
         </section>
+        <!-- Add your about content (e.g., team section) here -->
     </main>
     
     <footer>
@@ -53,5 +46,6 @@
             <p>&copy; 2025 TAN Estate Agents. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>
