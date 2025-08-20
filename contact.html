@@ -1,13 +1,51 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact TAN Estate Agents for luxury real estate consultations and personalized property services in the UK.">
-    <meta name="keywords" content="contact TAN Estate Agents, luxury real estate UK, property consultation">
-    <title>Contact Us - TAN Estate Agents</title>
+    <title>TAN Estate Agents - Contact Us</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
     <header>
@@ -23,46 +61,48 @@
             </nav>
         </div>
     </header>
-    
+
     <main>
-        <section class="contact image-hero">
-            <img src="placeholder-hero3.jpg" alt="Contact TAN Estate Agents" class="hero-image">
+        <section class="hero image-hero contact-hero" style="background-image: url('placeholder-hero3.jpg');">
             <div class="container content-below">
                 <h1 class="animate__animated animate__fadeIn">Contact Us</h1>
-                <p style="text-align:center;">Engage our elite team for bespoke consultations, private viewings, or tailored real estate solutions.</p>
-                <form action="https://formspree.io/f/mrblwgqk" method="post">
-                    <input type="text" name="_gotcha" style="display:none;" aria-hidden="true">
+                <p class="animate__animated animate__fadeInUp">Engage our elite team for bespoke consultations.</p>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <div class="container">
+                <form action="https://formspree.io/f/mrblwgqk" method="POST">
                     <label for="name">Full Name:</label>
                     <input type="text" id="name" name="name" required>
-                    
                     <label for="email">Email Address:</label>
                     <input type="email" id="email" name="email" required>
-                    
-                    <label for="message">Your Inquiry:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    
-                    <button type="submit" class="cta-button animate__animated animate__fadeIn">Submit Inquiry</button>
+                    <label for="inquiry">Your Inquiry:</label>
+                    <textarea id="inquiry" name="inquiry" rows="5" required></textarea>
+                    <button type="submit" class="cta-button">Submit</button>
                 </form>
+
                 <div class="contact-info">
-                    <h2 class="animate__animated animate__fadeIn">Our Location</h2>
+                    <h2>Our Location</h2>
                     <p>123 Luxury Lane, London, UK</p>
                     <p>Telephone: (+44) 7754-550-779</p>
-                    <p>Email: info@tanestateagents.com</p>
+                    <p>Email: <a href="mailto:info@tanestateagents.com">info@tanestateagents.com</a></p>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <p>&copy; 2025 TAN Estate Agents. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i><span class="social-fallback">Facebook</span></a>
+                <a href="#"><i class="fab fa-twitter"></i><span class="social-fallback">Twitter</span></a>
+                <a href="#"><i class="fab fa-instagram"></i><span class="social-fallback">Instagram</span></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i><span class="social-fallback">LinkedIn</span></a>
             </div>
         </div>
     </footer>
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> <!-- Replace 'your-kit-id' with your Font Awesome kit ID (e.g., a076d05399) -->
 </body>
 </html>
